@@ -1,0 +1,17 @@
+{
+  "_comment": "RSS/Atom feeds grouped by topic. Replace with feeds relevant to YOUR space. For paywalled outlets that lack a real feed, use a Google News RSS URL for their domain.",
+  "_google_news_tip": "https://news.google.com/rss/search?q=site:example.com+when:7d&hl=en-US",
+  "groups": {
+    "ai_labs": [
+      "https://www.anthropic.com/news/rss.xml",
+      "https://openai.com/blog/rss.xml"
+    ],
+    "tech_news": [
+      "https://techcrunch.com/category/artificial-intelligence/feed/"
+    ],
+    "your_niche": [
+      "https://example-newsletter.com/feed",
+      "https://news.google.com/rss/search?q=%22your+category%22+when:7d&hl=en-US"
+    ]
+  }
+}

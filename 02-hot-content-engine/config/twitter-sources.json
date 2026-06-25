@@ -1,0 +1,13 @@
+{
+  "_comment": "X/Twitter sources. 'accounts' are handles to track (batched into from: queries). 'keyword_queries' are viral searches with a min-likes floor. Replace with the labs, founders, builders, and VCs relevant to your space. Runs once a day (paid).",
+  "accounts": [
+    "handle_of_a_lab",
+    "handle_of_a_founder",
+    "handle_of_a_builder",
+    "handle_of_a_vc"
+  ],
+  "keyword_queries": [
+    { "query": "\"your category\"", "min_faves": 50 },
+    { "query": "your buyer pain phrase", "min_faves": 100 }
+  ]
+}

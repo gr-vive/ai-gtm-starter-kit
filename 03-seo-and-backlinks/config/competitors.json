@@ -1,0 +1,11 @@
+{
+  "_comment": "Your domain + the competitor universe to intersect. Keep this in sync with 01-gtm-foundation/foundation/market/competitors/approved.md. More competitors = better overlap signal; 5-25 is a good range.",
+  "self": "{{DOMAIN}}",
+  "competitors": [
+    "competitora.com",
+    "competitorb.com",
+    "competitorc.com",
+    "competitord.com",
+    "competitore.com"
+  ]
+}

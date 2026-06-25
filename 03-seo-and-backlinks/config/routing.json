@@ -1,0 +1,57 @@
+{
+  "_meta": {
+    "purpose": "Step 7 router. After the engine produces opportunities, each surviving domain is classified by SITE TYPE and routed to ONE action. Email is only for 'email_outreach'. Newsletters and directories become report sections, not emails.",
+    "updated": "2026-01-01",
+    "production_note": "site_type + has_paid_option + vertical_fit are determined by fetching the site (homepage + /about + the signal pages below) and having the AI classify. The known_sites map seeds the first report and acts as a cache; unknown domains route to 'needs_review' until classified."
+  },
+
+  "actions": {
+    "email_outreach": {
+      "label": "Direct outreach — ask for publication / contribution",
+      "email_angle": "Propose a contributor article, expert quote, or being added to a relevant list.",
+      "auto_email": false
+    },
+    "report_newsletter": {
+      "label": "Paid newsletters — consider buying a slot",
+      "auto_email": false,
+      "note": "Self-serve or rate-card sponsorship. Report lists each with its advertise/sponsor page."
+    },
+    "report_directory": {
+      "label": "Directories — self-list (no email)",
+      "auto_email": false,
+      "note": "Free or self-service submission. Report lists each with its submit page."
+    },
+    "exclude": {
+      "auto_email": false,
+      "reasons": {
+        "commercial_blog": "A product/company blog. They won't link to a competitor; the link was their own content.",
+        "event_summit": "Conference / summit, not a publisher.",
+        "wrong_vertical": "Off-topic for your category.",
+        "tier1_too_expensive": "Top-tier mainstream press. Paid placement unrealistic.",
+        "foreign_market": "Non-target-language regional outlet.",
+        "incidental_noise": "Passed numeric filters but the link is incidental; not a real target."
+      }
+    },
+    "needs_review": {
+      "auto_email": false,
+      "note": "Ambiguous on automated signals. Held for a human glance before routing."
+    }
+  },
+
+  "classification_signals": {
+    "_comment": "URL paths the classifier probes on each candidate site to infer the action.",
+    "paid_media_pages": ["/advertise", "/advertising", "/sponsor", "/sponsorship", "/media-kit", "/work-with-us", "/partner"],
+    "contributor_pages": ["/write-for-us", "/contribute", "/contributors", "/guest-post", "/submit-article"],
+    "directory_pages": ["/submit", "/add", "/add-startup", "/add-company", "/get-listed", "/new"],
+    "tier1_press_dr_min": 90
+  },
+
+  "known_sites": {
+    "_comment": "Seed/cache of classified domains. Add entries as you classify, so future runs skip re-probing. Examples below show the shape — replace with sites in your niche.",
+    "example-fintech-media.com": { "action": "email_outreach", "type": "industry_media" },
+    "example-newsletter.com":    { "action": "report_newsletter", "type": "newsletter", "note": "Buy a sponsor slot." },
+    "example-directory.com":     { "action": "report_directory", "type": "saas_directory" },
+    "example-competitor-blog.com": { "action": "exclude", "reason": "commercial_blog" },
+    "example-conference.com":    { "action": "exclude", "reason": "event_summit" }
+  }
+}

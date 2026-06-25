@@ -1,0 +1,12 @@
+{
+  "_comment": "Newsletters / vendor lists your DEDICATED inbox is subscribed to. Used to label and prioritize, and to filter out transactional mail. Replace with the senders you actually subscribe. The inbox is read over IMAP from your laptop.",
+  "newsletters": [
+    { "name": "An AI newsletter", "from": "hello@some-newsletter.com" },
+    { "name": "A vendor's announcements", "from": "updates@some-vendor.com" }
+  ],
+  "ignore_senders": [
+    "noreply@",
+    "billing@",
+    "support@"
+  ]
+}

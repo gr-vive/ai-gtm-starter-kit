@@ -1,0 +1,14 @@
+{
+  "_comment": "LinkedIn sources via a 3rd-party data API. 'profiles' = personal profiles to track; 'company_pages' = company/showcase pages; 'keyword_queries' = post search. Replace with founders/operators and companies in your space. Mind the provider's concurrency cap (often ~5). Runs once a day (paid).",
+  "profiles": [
+    "https://www.linkedin.com/in/some-founder/",
+    "https://www.linkedin.com/in/some-operator/"
+  ],
+  "company_pages": [
+    "https://www.linkedin.com/company/a-relevant-company/"
+  ],
+  "keyword_queries": [
+    "your category",
+    "your buyer pain phrase"
+  ]
+}

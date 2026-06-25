@@ -1,0 +1,72 @@
+{
+  "_meta": {
+    "purpose": "Selection rules for the link-intersect engine. The single source of truth for HOW an outreach target is chosen. Tune here, not in code/prose.",
+    "updated": "2026-01-01"
+  },
+
+  "hard_filters": {
+    "_comment": "A domain must pass ALL of these to survive, applied after intersect + subtract.",
+    "exclude_if_already_links_to_self": true,
+    "exclude_is_spam": true,
+    "require_dofollow_capable": true,
+    "min_domain_rating": 20,
+    "min_traffic_domain": 100
+  },
+
+  "intersect": {
+    "_comment": "Core signal: how many distinct competitors link to this domain. >=2 means it already references multiple players in your category.",
+    "min_competitor_overlap": 2,
+    "overlap_1_exception_if_topical": true
+  },
+
+  "platform_denylist": {
+    "_comment": "Generic platforms where a 'link' is a hosted page/profile/footer, not an editorial opportunity. Never outreach targets. Trim or extend for your niche.",
+    "domains": [
+      "substack.com", "beehiiv.com", "medium.com", "ghost.io", "wordpress.com",
+      "wix.com", "squarespace.com", "webflow.io", "netlify.app", "vercel.app",
+      "pages.dev", "github.io", "github.com", "gitlab.io", "notion.site",
+      "wikipedia.org", "youtube.com", "reddit.com", "linkedin.com",
+      "facebook.com", "x.com", "twitter.com", "t.me", "bsky.app",
+      "stackoverflow.com", "stackexchange.com", "carrd.co", "beacons.ai"
+    ]
+  },
+
+  "category_denylist": {
+    "_comment": "Domain CATEGORIES that are dofollow but not contribute-able (competitor job posts, hosted podcasts).",
+    "job_boards": ["workable.com", "ashbyhq.com", "himalayas.app", "welcometothejungle.com"],
+    "podcast_hosting": ["buzzsprout.com", "simplecast.com", "transistor.fm", "player.fm", "iheart.com"]
+  },
+
+  "spam_patterns": {
+    "_comment": "Belt-and-suspenders on top of Ahrefs is_spam. Drop on regex match of the root domain (PBN / paid-link footprints).",
+    "tld_or_keyword_regex": [
+      "\\.(shop|agency|website|click|online)$",
+      "(buybacklinks|seolink|linkseo|ranklink|pbnseo|premiumseolinks|buyseo|seorank)"
+    ]
+  },
+
+  "link_type_targets": {
+    "_comment": "The contribute-able opportunity types. Step 5 tags each survivor by reading its linking page; this drives the pitch angle. 'other' is held for manual review.",
+    "listicle": "best-X / top-tools / alternatives-to roundup. Pitch: add us to the list.",
+    "resource_page": "curated links / 'tools we use'. Pitch: include us as a resource.",
+    "editorial_media": "news / analysis article. Pitch: contributor article or expert quote.",
+    "newsletter": "they covered a competitor. Pitch: brief the author or buy a slot.",
+    "directory": "SaaS / startup database listing. Pitch: claim or request a listing.",
+    "dev_blog": "engineering blog mentioning a category tool. Pitch: technical guest post.",
+    "podcast": "actual show (not a hosting platform). Pitch: guest spot."
+  },
+
+  "topical_keywords": {
+    "_comment": "Used for the topical-relevance score and the overlap=1 exception. Replace with terms on-theme for YOUR category.",
+    "terms": ["your-category", "your-buyer-pain", "adjacent-topic", "key-feature", "industry-term"]
+  },
+
+  "scoring_weights": {
+    "_comment": "Final rank = weighted sum of normalized components. Tune toward authority vs topical fit vs ease.",
+    "overlap": 0.35,
+    "domain_rating": 0.20,
+    "traffic": 0.15,
+    "topical_relevance": 0.20,
+    "linktype_actionability": 0.10
+  }
+}

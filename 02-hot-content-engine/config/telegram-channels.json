@@ -1,0 +1,7 @@
+{
+  "_comment": "Public Telegram channels to read via your own Telethon user session (laptop). Use channel usernames without the @. Replace with channels relevant to your space/region.",
+  "channels": [
+    "some_ai_news_channel",
+    "some_regional_tech_channel"
+  ]
+}

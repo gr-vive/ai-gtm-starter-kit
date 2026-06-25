@@ -1,0 +1,10 @@
+{
+  "_comment": "Topic/keyword clusters used for keyword search across sources (Hacker News, X, LinkedIn) and as relevance hints. Replace these with the terms that define YOUR space. Keep phrases short — long phrases get near-zero recall.",
+  "_last_updated": "2026-01-01",
+  "clusters": {
+    "Your Core Topic": ["primary term", "synonym one", "synonym two"],
+    "Adjacent Topic": ["adjacent term", "related phrase"],
+    "Buyer Pain": ["the problem in their words", "another phrasing"],
+    "Competitors": ["competitor a", "competitor b", "competitor c"]
+  }
+}
